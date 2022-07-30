@@ -1,0 +1,26 @@
+.search {
+  display: block;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  text-align: center;
+  position: relative;
+}
+
+.button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0;
+  text-align: center;
+}
+
+.form {
+  display: flex;
+  width: 182px;
+  flex-direction: column;
+  margin: 0 auto 20px auto;
+  justify-content: center;
+}

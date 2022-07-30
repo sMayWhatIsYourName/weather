@@ -1,0 +1,60 @@
+.outter {
+  width: 180px;
+  cursor: pointer;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-rows: repeat(3, 100px);
+  gap: 20px 0;
+}
+
+.current {
+  padding: 45px 40px 40px 40px;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 40px;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-size:  180px;
+  background-position: center 130px;
+}
+
+.date, .temp, .about {
+  text-align: center;
+  margin: 0;
+}
+
+.temp {
+  font-size: 70px;
+  line-height: 85px;
+  margin-bottom: 180px;
+}
+
+.about {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  color: #0E0E0E;
+  opacity: 0.7;
+  margin-bottom: 30px;
+}
+
+.date {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 25px;
+  font-weight: 500;
+  line-height: 30px;
+  opacity: 0.3;
+}
+
+.line {
+  margin-top: 15px;
+  width: 25px;
+  border: none;
+  height: 6px;
+  background-color: #000;
+  opacity: 0.3;
+  border-radius: 40px;
+}
