@@ -1,6 +1,5 @@
 import { useSelector } from 'react-redux';
 import { useContext } from 'react';
-import cn from 'classnames';
 
 import styles from './CardList.module.scss';
 import { CardCurrent } from '../CardCurrent/CardCurrent';

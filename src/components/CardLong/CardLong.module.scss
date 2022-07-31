@@ -1,11 +1,13 @@
 .cardData {
-  border: 2px solid #E1E1E1;
-  border-radius: 20px;
-  padding: 22.5px 0;
-  box-sizing: border-box;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+  padding: 22.5px 0;
+
+  border: 2px solid #e1e1e1;
+  border-radius: 20px;
 }
 
 .description {
@@ -13,15 +15,15 @@
 }
 
 .sunrise {
-  background-position: top left;
-  background-image: url('./Sun.svg');
+  background-image: url("./Sun.svg");
   background-repeat: no-repeat;
+  background-position: top left;
 }
 
 .sunset {
-  background-position: bottom right;
-  background-image: url('./Moon.svg');
+  background-image: url("./Moon.svg");
   background-repeat: no-repeat;
+  background-position: bottom right;
 }
 
 .flex {
@@ -35,9 +37,11 @@
 }
 
 .termin {
-  color: #0E0E0E;
-  opacity: 0.5;
-  font-size: 14px;
-  text-overflow: ellipsis;
   overflow: hidden;
+
+  font-size: 14px;
+  color: #0e0e0e;
+  text-overflow: ellipsis;
+
+  opacity: 0.5;
 }

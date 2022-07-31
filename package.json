@@ -32,7 +32,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "lint:es": "eslint --ext .js,.jsx .",
+    "lint:es": "eslint --ext .ts,.tsx .",
     "lint:es:fix": "npm run lint:es -- --fix",
     "lint:scss": "npx stylelint **/*.scss",
     "lint:scss:fix": "npm run lint:scss -- --fix"
