@@ -1,4 +1,5 @@
-import { isToday, isTomorrow, isThisWeek, fromUnixTime } from 'date-fns';
+import { isToday, isTomorrow, fromUnixTime } from 'date-fns';
+import i18n from 'i18next';
 
 import { IWeather, IWeatherItem } from '../interfaces/weather.interface';
 
@@ -23,25 +24,31 @@ export const getDate = (date: Date): string => {
   if (isTomorrow(date)) {
     return 'Завтра';
   }
-  if (isThisWeek(date)) {
-    const weekDay = date.getDay();
-    return getWeekDay(weekDay);
-  }
-  return `${date.getDate()}/${date.getMonth() + 1}`;
+  const weekDay = date.getDay();
+  return getWeekDay(weekDay);
 };
 
 export const sayWeather = (weather: IWeatherItem, about: string) => (): void => {
-  const { humidity, pressure, feels_like, sunrise, sunset, temp, wind_speed } = weather;
-  const sunriseTime = `${fromUnixTime(sunrise).getHours()} часов, ${fromUnixTime(sunrise).getMinutes()} минут`;
-  const sunsetTime = `${fromUnixTime(sunset).getHours()} часов, ${fromUnixTime(sunset).getMinutes()} минут`;
+  const { t } = i18n;
+  const { humidity, pressure, feels_like, sunrise, sunset, temp, wind_speed, dt } = weather;
+  const sunriseTime = `${t('units.hours', { count: fromUnixTime(sunrise).getHours() })}, ${t('units.minutes', { count: fromUnixTime(sunrise).getMinutes()})}`;
+  const sunsetTime = `${t('units.hours', { count: fromUnixTime(sunset).getHours() })}, ${t('units.minutes', { count: fromUnixTime(sunset).getMinutes()})}`;
   const voices = speechSynthesis.getVoices();
+  const dateFromTimestamp = fromUnixTime(dt);
+  let day = t(`week.${dateFromTimestamp.getDay()}`);
+  if (isToday(dateFromTimestamp)) {
+    day = 'Сегодня';
+  } else if (isTomorrow(dateFromTimestamp)) {
+    day = 'Завтра';
+  }
   const utterance = new SpeechSynthesisUtterance(`
-    Сегодня: ${about}
+    Погода на ${day}
+    Будет: ${about}
     Температура: ${Math.trunc(temp)}° цельсия,
     Ощущается как: ${Math.trunc(feels_like)}° цельсия,
     Влажность: ${humidity}%,
-    Скорость ветра: ${Math.trunc(wind_speed)} метров в секунду,
-    Давление: ${pressure}миллиметров ртутного столба,
+    Скорость ветра: ${t('units.meters', { count: Math.trunc(wind_speed) })} в секунду,
+    Давление: ${t('units.millimeters', { count: pressure })} ртутного столба,
     Восход солнца в: ${sunriseTime},
     Закат солнца в: ${sunsetTime},
     `);
@@ -65,7 +72,7 @@ export const returnNormalizedData = (arr: any, current: IWeatherItem, city: stri
     day.feels_like = feelsLike;
     return day;
   });
-  const daily: IWeatherItem[] = [current, ...normalized.slice(1)];
+  const daily: IWeatherItem[] = [current, ...normalized.slice(1, -1)];
 
   return {
     daily,

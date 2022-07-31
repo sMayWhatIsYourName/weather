@@ -10,6 +10,7 @@ import { getDate, sayWeather, normalizeTime } from '../../helpers/helpers';
 
 export const CardCurrent = ({ city, weather }: CardCurrentProps): JSX.Element => {
   const { t } = useTranslation();
+
   if (weather === undefined) {
     return <div></div>;
   }

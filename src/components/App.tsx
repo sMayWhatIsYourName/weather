@@ -10,7 +10,6 @@ import { WeatherContext } from '../contexts/index';
 function App() {
   const dispatch = useDispatch<AppDispatch>();
   const [currentWeatherId, setCurrentWeatherId] = useState(0);
-  console.log(currentWeatherId);
   useEffect(() => {
     dispatch(fetchCity());
   }, []);
