@@ -19,9 +19,9 @@ export const CardList = (): JSX.Element => {
     <div className={styles.wrapper}>
       {weekX.map((day, i) => {
         if (currentWeatherId === i) {
-          return <CardCurrent key={i} weather={current} city={city} />
+          return <CardCurrent key={day.dt} weather={current} city={city} />
         }
-        return <CardSide key={i} weather={day} weatherId={i} />
+        return <CardSide key={day.dt} weather={day} weatherId={i} />
       })}
     </div>
   );
