@@ -1,0 +1,27 @@
+.button {
+  cursor: pointer;
+
+  width: 70px;
+  height: 70px;
+  padding: 0;
+
+  opacity: 0.2;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+}
+
+.button:disabled {
+  cursor: auto;
+}
+
+.next {
+  background-image: url("./Arrow.svg");
+}
+
+.prev {
+  transform: rotate(180deg);
+
+  background-image: url("./Arrow.svg");
+}

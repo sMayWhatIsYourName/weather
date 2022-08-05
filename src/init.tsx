@@ -2,6 +2,9 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import i18next from 'i18next';
 import { initReactI18next } from 'react-i18next';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/mousewheel';
 
 import App from './components/App';
 import { store } from './slices/index';

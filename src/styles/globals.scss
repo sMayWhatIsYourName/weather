@@ -16,3 +16,18 @@ dd {
 dl {
   width: 100%;
 }
+
+.swiper-button-prev,
+.swiper-button-next {
+  color: #000;
+
+  opacity: 0.2;
+}
+
+.swiper-slide {
+  width: min-content;
+}
+
+.swiper-wrapper {
+  max-width: 1030px;
+}
