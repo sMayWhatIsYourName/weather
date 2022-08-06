@@ -12,6 +12,7 @@ import { Loader } from '../Loader/Loader';
 export const CardList = (): JSX.Element => {
   const week = useSelector((state: IWeather) => state.daily.map((day) => day.id));
   const chosenId = useSelector((state: IWeather) => state.chosenId);
+  const deviceWidth = window.innerWidth;
   return (
     week.length === 0
     ? 
@@ -22,7 +23,7 @@ export const CardList = (): JSX.Element => {
       <Swiper
         modules={[Navigation, Mousewheel]}
         slidesPerView='auto'
-        spaceBetween={30}
+        spaceBetween={deviceWidth > 768 ? 30 : 25}
         navigation={{
           nextEl: '.next',
           prevEl: '.prev',

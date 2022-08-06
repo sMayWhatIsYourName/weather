@@ -18,9 +18,13 @@ export const Search = memo(({ city }: SearchProps): JSX.Element => {
   const onSubmit: SubmitHandler<IFormCity> = ({ city }) => {
     dispatch(fetchWeatherFromCity(city));
   };
+  const deviceWidth = window.innerWidth;
+  
   useEffect(() => {
-    setFocus('city');
-  }, [setFocus])
+    if (deviceWidth > 768) {
+      setFocus('city');
+    }
+  }, [])
   return (
     <div className={styles.outter}>
       <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>

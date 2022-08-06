@@ -36,6 +36,15 @@
 }
 
 @media (max-width: 768px) {
+  .outter {
+    width: 175px;
+  }
+
+  .wrapper {
+    grid-template-columns: 100px;
+    justify-content: center;
+  }
+
   .current {
     padding-top: 75px;
     background-position-y: 120px;
