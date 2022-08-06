@@ -25,3 +25,9 @@
 
   background-image: url("./Arrow.svg");
 }
+
+@media (max-width: 768px) {
+  .button {
+    display: none;
+  }
+}

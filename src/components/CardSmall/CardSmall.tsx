@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 export const CardSmall = ({ text, sayWeather, type, className, ...props }: CardSmallProps): JSX.Element => {
   const { t } = useTranslation();
   return (
-    <div className={cn(styles.cardData, {
+    <div className={cn(styles.cardData, className, {
       [styles.btn]: type === 'button',
     })} {...props}>
       { type !== 'button'

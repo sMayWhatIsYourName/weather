@@ -27,8 +27,11 @@
 .form {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  margin-bottom: 20px;
+}
 
-  width: 182px;
-  margin: 0 auto 20px;
+@media (max-width: 768px) {
+  .search {
+    font-size: 25px;
+  }
 }

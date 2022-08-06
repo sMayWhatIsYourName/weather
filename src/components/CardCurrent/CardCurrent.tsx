@@ -40,7 +40,7 @@ export const CardCurrent = (props: CardCurrentProps): JSX.Element => {
           <CardSmall text={data.humidity} type='humidity' />
           <CardSmall text={Math.trunc(data.wind_speed)} type='wind' />
           <CardLong className={styles.chosen} text={sunriseFormatted} type='sunrise' />
-          <CardSmall text={data.pressure} type='pressure' />
+          <CardSmall className={styles.pressure} text={data.pressure} type='pressure' />
           <CardSmall sayWeather={sayWeather(data, about)} type='button' />
           <CardLong className={styles.chosen} text={sunsetFormatted} type='sunset' />
         </div>

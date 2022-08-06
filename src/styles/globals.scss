@@ -31,3 +31,13 @@ dl {
 .swiper-wrapper {
   max-width: 1030px;
 }
+
+@media (max-width: 768px) {
+  body {
+    padding: 15px 15px 20px 15px;
+  }
+
+  .swiper-slide {
+    // margin-right: 20px !important;
+  }
+}

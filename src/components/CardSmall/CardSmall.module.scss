@@ -48,3 +48,10 @@
 .btn {
   cursor: pointer;
 }
+
+@media (max-width: 768px) {
+  .btn {
+    grid-row: 5 / 6;
+    grid-column: span 2;
+  }
+}

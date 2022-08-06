@@ -70,3 +70,26 @@
   border: none;
   border-radius: 40px;
 }
+
+
+@media (max-width: 768px) {
+  .outter {
+    width: 275px;
+  }
+
+  .current {
+    padding: 20px 15px 30px 15px;
+    background-position-y: 50px;
+  }
+
+  .wrapper {
+    grid-template-columns: repeat(2, 100px);
+    grid-template-rows: repeat(5, 100px);
+    justify-content: space-evenly;
+  }
+
+  .pressure {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+  }
+}

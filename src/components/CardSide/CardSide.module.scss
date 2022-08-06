@@ -34,3 +34,14 @@
 
   opacity: 0.3;
 }
+
+@media (max-width: 768px) {
+  .current {
+    padding-top: 75px;
+    background-position-y: 120px;
+  }
+
+  .temp {
+    margin-bottom: 112px;
+  }
+}
