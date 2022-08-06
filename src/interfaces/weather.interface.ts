@@ -17,7 +17,13 @@ export interface IWeatherItem {
   feels_like: number;
 }
 
+export interface IWeatherDay {
+  id: number;
+  data: IWeatherItem;
+}
+
 export interface IWeather {
-  daily: IWeatherItem[];
+  daily: IWeatherDay[];
   city: string;
+  chosenId: number;
 }

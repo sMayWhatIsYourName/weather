@@ -1,7 +1,7 @@
 import { isToday, isTomorrow, fromUnixTime } from 'date-fns';
 import i18n from 'i18next';
 
-import { IWeather, IWeatherItem } from '../interfaces/weather.interface';
+import { IWeatherDay, IWeatherItem } from '../interfaces/weather.interface';
 
 const weekObj: Record<number | string | symbol, string> = {
   0: 'ВС',
@@ -64,7 +64,7 @@ export const normalizeTime = (date: Date) => {
   return splitedDate.slice(0, 2).join(':');
 };
 
-export const returnNormalizedData = (arr: any, current: IWeatherItem, city: string): IWeather => {
+export const returnNormalizedData = (arr: any, current: IWeatherItem): IWeatherDay[] => {
   const normalized: IWeatherItem[] = arr.map((day: any) => {
     const temp = day.temp.day;
     const feelsLike = day.feels_like.day;
@@ -72,10 +72,5 @@ export const returnNormalizedData = (arr: any, current: IWeatherItem, city: stri
     day.feels_like = feelsLike;
     return day;
   });
-  const daily: IWeatherItem[] = [current, ...normalized.slice(1, -1)];
-
-  return {
-    daily,
-    city,
-  };
+  return [current, ...normalized].map((day, i) => ({ data: day, id: i }));
 };

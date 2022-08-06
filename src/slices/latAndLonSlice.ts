@@ -5,7 +5,6 @@ import {
 
 import { APIPaths } from '../routes';
 import { ILatAndLon } from '../interfaces/latAndLon.interface';
-import { returnNormalizedData } from '../helpers/helpers';
 
 export default createAsyncThunk(
   'weather/latAndLon',
@@ -14,7 +13,11 @@ export default createAsyncThunk(
     const latAndLonData: ILatAndLon[] = latAndLonResponse.data;
     const firstElement = latAndLonData[0];
     const weatherResponse = await axios.get(APIPaths.getWeather(firstElement.lat, firstElement.lon));
-    const { data } = weatherResponse;
-    return returnNormalizedData(data.daily, data.current, city);
+    const { data: { daily, current } } = weatherResponse;
+    return {
+      daily,
+      current,
+      city,
+    }
   }
 );

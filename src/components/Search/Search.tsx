@@ -1,5 +1,7 @@
 import { useForm, SubmitHandler } from 'react-hook-form';
 import  { useEffect } from 'react';
+import { memo } from 'react';
+
 import { SearchProps } from './Search.props';
 import styles from './Search.module.scss';
 import { useDispatch } from 'react-redux';
@@ -10,7 +12,7 @@ interface IFormCity {
   city: string;
 }
 
-export const Search = ({ city, className, ...props }: SearchProps): JSX.Element => {
+export const Search = memo(({ city }: SearchProps): JSX.Element => {
   const { register, setFocus, handleSubmit } = useForm<IFormCity>({ defaultValues: { city } });
   const dispatch = useDispatch<AppDispatch>();
   const onSubmit: SubmitHandler<IFormCity> = ({ city }) => {
@@ -32,4 +34,4 @@ export const Search = ({ city, className, ...props }: SearchProps): JSX.Element 
       </form>
     </div>
   );
-};
+});

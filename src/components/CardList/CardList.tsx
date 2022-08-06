@@ -1,23 +1,22 @@
 import { useSelector } from 'react-redux';
-import { useContext } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Mousewheel } from 'swiper';
 
 import styles from './CardList.module.scss';
 import { CardCurrent } from '../CardCurrent/CardCurrent';
 import { CardSide } from '../CardSide/CardSide';
-import { WeatherContext } from '../../contexts';
 import { IWeather } from '../../interfaces/weather.interface';
 import { NavigationButton } from '../NavigationButton/NavigationButton';
+import { Loader } from '../Loader/Loader';
 
 export const CardList = (): JSX.Element => {
-  const { daily: week, city } = useSelector((state: IWeather) => state);
-  const { currentWeatherId } = useContext(WeatherContext);
-  const current = week.find((_day, i) => i === currentWeatherId);
-  if (current === undefined) {
-    return <div></div>;
-  }
+  const week = useSelector((state: IWeather) => state.daily.map((day) => day.id));
+  const chosenId = useSelector((state: IWeather) => state.chosenId);
   return (
+    week.length === 0
+    ? 
+    <Loader />
+    :
     <div className={styles.wrapper}>
       <NavigationButton type='prev' />
       <Swiper
@@ -30,20 +29,12 @@ export const CardList = (): JSX.Element => {
         }}
         mousewheel
       >
-        {week.map((day, i) => {
-          if (currentWeatherId === i) {
-            return (
-              <SwiperSlide key={day.dt}>
-                <CardCurrent weather={current} city={city} />
-              </SwiperSlide>
-            );
-          }
-          return (
-            <SwiperSlide key={day.dt}>
-              <CardSide weather={day} weatherId={i} />
-            </SwiperSlide>
-          );
-        })}
+        {week.map((id) => (
+          <SwiperSlide key={id}>
+            {chosenId === id ? <CardCurrent /> : <CardSide dayId={id} />}
+          </SwiperSlide>
+        )
+        )}
       </Swiper>
       <NavigationButton type='next' />
     </div>

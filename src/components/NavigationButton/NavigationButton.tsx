@@ -1,9 +1,10 @@
 import cn from 'classnames';
+import { memo } from 'react';
 
 import { NavigationButtonProps } from './NavigationButton.props';
 import styles from './NavigationButton.module.scss';
 
-export const NavigationButton = ({ type, ...props }: NavigationButtonProps): JSX.Element => {
+export const NavigationButton = memo(({ type }: NavigationButtonProps): JSX.Element => {
   return (
     <button className={cn({
       next: type === 'next',
@@ -11,6 +12,6 @@ export const NavigationButton = ({ type, ...props }: NavigationButtonProps): JSX
       [styles.next]: type === 'next',
       [styles.prev]: type === 'prev',
       [styles.button]: true,
-    })} {...props} />
+    })} />
   );
-};
+});

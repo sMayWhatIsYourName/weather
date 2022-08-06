@@ -5,27 +5,31 @@ import {
 import fetchWeatherFromIp from './ipSlice';
 import fetchWeatherFromCity from './latAndLonSlice';
 import { IWeather } from '../interfaces/weather.interface';
+import { returnNormalizedData } from '../helpers/helpers';
 
 const initialState: IWeather = {
   daily: [],
   city: '',
+  chosenId: 0,
 };
+
 const weatherSlice = createSlice({
   name: 'weather',
   initialState,
   reducers: {
-    setCurrent: (state, { payload }) => {
-      console.log(payload);
+    setCurrent: (state, { payload: { id } }) => {
+      console.log(id)
+      state.chosenId = id;
     }
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchWeatherFromIp.fulfilled, (state, { payload: {city, daily } }) => {
-        state.daily = daily;
+      .addCase(fetchWeatherFromIp.fulfilled, (state, { payload: {city, daily, current } }) => {
+        state.daily = returnNormalizedData(daily.slice(1, -1), current);
         state.city = city;
       })
-      .addCase(fetchWeatherFromCity.fulfilled, (state, { payload: {city, daily } }) => {
-        state.daily = daily;
+      .addCase(fetchWeatherFromCity.fulfilled, (state, { payload: { city, daily, current } }) => {
+        state.daily = returnNormalizedData(daily.slice(1, -1), current);
         state.city = city;
       });
   },
