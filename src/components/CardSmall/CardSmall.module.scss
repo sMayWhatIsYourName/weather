@@ -4,7 +4,6 @@
   justify-content: center;
 
   box-sizing: border-box;
-  padding: 22.5px 0;
 
   border: 2px solid #e1e1e1;
   border-radius: 20px;
@@ -36,22 +35,4 @@
   text-overflow: ellipsis;
 
   opacity: 0.5;
-}
-
-.button {
-  cursor: pointer;
-
-  background-color: transparent;
-  border: none;
-}
-
-.btn {
-  cursor: pointer;
-}
-
-@media (max-width: 768px) {
-  .btn {
-    grid-row: 5 / 6;
-    grid-column: span 2;
-  }
 }

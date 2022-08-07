@@ -1,0 +1,17 @@
+.button {
+  cursor: pointer;
+
+  padding: 0;
+
+  background-color: transparent;
+  background-image: url("./listen.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+@media (max-width: 768px) {
+  .button {
+    grid-column: span 2;
+    grid-row: 5 / 6;
+  }
+}

@@ -71,14 +71,14 @@
   border-radius: 40px;
 }
 
-
 @media (max-width: 768px) {
   .outter {
     width: 275px;
   }
 
   .current {
-    padding: 20px 15px 30px 15px;
+    padding: 20px 15px 30px;
+
     background-position-y: 50px;
   }
 

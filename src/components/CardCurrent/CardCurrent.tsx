@@ -6,6 +6,7 @@ import { CardCurrentProps } from './CardCurrent.props';
 import styles from './CardCurrent.module.scss';
 import { Search } from '../Search/Search';
 import { CardSmall } from '../CardSmall/CardSmall';
+import { ListenButton } from '../ListenButton/ListenButton';
 import { CardLong } from '../CardLong/CardLong';
 import { getDate, sayWeather, normalizeTime } from '../../helpers/helpers';
 import { IWeather } from '../../interfaces/weather.interface';
@@ -41,7 +42,7 @@ export const CardCurrent = (props: CardCurrentProps): JSX.Element => {
           <CardSmall text={Math.trunc(data.wind_speed)} type='wind' />
           <CardLong className={styles.chosen} text={sunriseFormatted} type='sunrise' />
           <CardSmall className={styles.pressure} text={data.pressure} type='pressure' />
-          <CardSmall sayWeather={sayWeather(data, about)} type='button' />
+          <ListenButton sayWeather={sayWeather(data, about)} />
           <CardLong className={styles.chosen} text={sunsetFormatted} type='sunset' />
         </div>
       </div>
