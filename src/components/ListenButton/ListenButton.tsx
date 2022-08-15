@@ -7,8 +7,6 @@ import cardSmallStyles from '../CardSmall/CardSmall.module.scss';
 
 export const ListenButton = memo(({ sayWeather, about, ...props }: ListenButtonProps): JSX.Element => {
   const [isSpeaking, setIsSpeaking] = useState<boolean>(false);
-  console.log(isSpeaking);
-  
   return (
     <div className={cn(cardSmallStyles.cardData, styles.btn)} onClick={() => {
       if (isSpeaking) {
@@ -18,7 +16,7 @@ export const ListenButton = memo(({ sayWeather, about, ...props }: ListenButtonP
         if (speechSynthesis.paused) {
           speechSynthesis.resume();
         } else {
-          sayWeather();
+          sayWeather(setIsSpeaking);
         }
         setIsSpeaking(true);
       }

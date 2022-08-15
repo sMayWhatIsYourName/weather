@@ -18,7 +18,6 @@ const weatherSlice = createSlice({
   initialState,
   reducers: {
     setCurrent: (state, { payload: { id } }) => {
-      console.log(id)
       state.chosenId = id;
     }
   },

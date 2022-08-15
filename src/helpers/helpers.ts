@@ -1,5 +1,6 @@
 import { isToday, isTomorrow, fromUnixTime } from 'date-fns';
 import i18n from 'i18next';
+import { Dispatch, SetStateAction } from 'react';
 
 import { IWeatherDay, IWeatherItem } from '../interfaces/weather.interface';
 
@@ -28,7 +29,7 @@ export const getDate = (date: Date): string => {
   return getWeekDay(weekDay);
 };
 
-export const sayWeather = (weather: IWeatherItem, about: string) => (): void => {
+export const sayWeather = (weather: IWeatherItem, about: string) => (setIsSpeaking: Dispatch<SetStateAction<boolean>>): void => {
   const { t } = i18n;
   const { humidity, pressure, feels_like, sunrise, sunset, temp, wind_speed, dt } = weather;
   const sunriseTime = `${t('units.hours', { count: fromUnixTime(sunrise).getHours() })}, ${t('units.minutes', { count: fromUnixTime(sunrise).getMinutes()})}`;
@@ -52,6 +53,9 @@ export const sayWeather = (weather: IWeatherItem, about: string) => (): void => 
     Восход солнца в: ${sunriseTime},
     Закат солнца в: ${sunsetTime},
     `);
+  utterance.addEventListener('end', () => {
+    setIsSpeaking(false);
+  });
   utterance.voice = voices[0];
   speechSynthesis.speak(utterance);
 };
