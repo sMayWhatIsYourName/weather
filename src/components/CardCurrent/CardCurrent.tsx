@@ -10,12 +10,16 @@ import { ListenButton } from '../ListenButton/ListenButton';
 import { CardLong } from '../CardLong/CardLong';
 import { getDate, sayWeather, normalizeTime } from '../../helpers/helpers';
 import { IWeather } from '../../interfaces/weather.interface';
+import { useEffect } from 'react';
 
 export const CardCurrent = (props: CardCurrentProps): JSX.Element => {
   const { city, chosenId, daily } = useSelector((state: IWeather) => state);
   const weather = daily.find(({ id }) => id === chosenId);
   const { t } = useTranslation();
-
+  
+  useEffect(() => {
+    speechSynthesis.cancel();
+  }, []);
   if (weather === undefined) {
     return <div></div>;
   }
