@@ -1,5 +1,6 @@
 ![photo](https://github.com/sMayWhatIsYourName2020/weather/blob/main/weather.jpg)
 # Прогноз погоды
+## [DEMO](https://weather-smaywhatisyourname.vercel.app/)
 ### С возможонстью автоопредления местоположения, озвучивания погоды с правильным склонением слов.
 ---
 ## Реализовано:
@@ -8,6 +9,7 @@
 - Озвучивание прогноза с помощью встроенного SpeechSynthesis API
 - Слайдер, содержащий прогноз на неделю
 - Адаптив
+- Лоадер во время загрузки страницы
 ---
 ## Технологии
 - TypeScript
