@@ -24,27 +24,39 @@
 
 В корневой директории вы можете:
 
-### `npm start`
-
+Устанавливает зависимости
+```sh
+$ npm install
+```
+---
 Запускает приложение в режиме разработчика.\
-Откройте [http://localhost:3000](http://localhost:3000) для просмотра в браузере.
+Откройте [http://localhost:3000/](http://localhost:3000/) для просмотра в браузере.
 
-### `npm run build`
-
+```sh
+$ npm start
+```
+---
 Собирает приложение в директорию `build` для деплоя.
-
-### `npm run lint:es`
-
+```sh
+$ npm run build
+```
+---
 Анализирует файлы `.ts`, `.tsx` на качество кода.
-
-### `npm run lint:es:fix`
-
+```sh
+$ npm run lint:es
+```
+---
 Исправляет код в `.ts`, `.tsx` файлах.
-
-### `npm run lint:scss`
-
+```sh
+$ npm run lint:es:fix
+```
+---
 Анализирует файлы `.scss` на качество кода.
-
-### `npm run lint:scss:fix`
-
+```sh
+$ npm run lint:scss
+```
+---
 Исправляет код в `.scss` файлах.
+```sh
+$ npm run lint:scss:fix
+```
