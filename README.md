@@ -1,5 +1,5 @@
 ![photo](https://github.com/sMayWhatIsYourName2020/weather/blob/main/weather.jpg)
-![photo](https://github.com/sMayWhatIsYourName2020/weather/blob/main/bunny-rabbit.jpg)
+![photo](https://github.com/sMayWhatIsYourName2020/weather/blob/main/bunny-rabbit.gif)
 # Прогноз погоды
 ## [DEMO](https://weather-smaywhatisyourname.vercel.app/)
 ### С возможонстью автоопредления местоположения, озвучивания погоды с правильным склонением слов.
