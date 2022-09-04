@@ -28,7 +28,7 @@ export const CardSide = memo(({ dayId, ...props }: CardSideProps): JSX.Element =
     }} {...props} className={styles.outter}>
       <p className={cn(cardCurrentStyles.date, styles.date)}>{getDate(fromUnixTime(data.dt))}</p>
       <div className={cn(cardCurrentStyles.current, styles.current)} style={{
-        backgroundImage: `url(/icons/${data.weather[0].icon}.png)`,
+        backgroundImage: `url(/icons/${data.weather[0].icon}.svg)`,
       }}>
         <p className={cn(cardCurrentStyles.temp, styles.temp)}>
           <span>{Math.trunc(data.temp)}</span>°

@@ -33,7 +33,7 @@ export const CardCurrent = (props: CardCurrentProps): JSX.Element => {
     <article className={styles.outter} {...props}>
       <p className={styles.date}>{getDate(fromUnixTime(data.dt))}</p>
       <div className={styles.current} style={{
-        backgroundImage: `url(/icons/${data.weather[0].icon}.png)`,
+        backgroundImage: `url(/icons/${data.weather[0].icon}.svg)`,
       }}>
         <Search city={city} />
         <p className={styles.temp}>
