@@ -29,11 +29,13 @@ export const getDate = (date: Date): string => {
   return getWeekDay(weekDay);
 };
 
-export const sayWeather = (weather: IWeatherItem, about: string) => (setIsSpeaking: Dispatch<SetStateAction<boolean>>): void => {
+export const sayWeather = (weather: IWeatherItem, about: string, sunrise: string, sunset: string) => (setIsSpeaking: Dispatch<SetStateAction<boolean>>): void => {
   const { t } = i18n;
-  const { humidity, pressure, feels_like, sunrise, sunset, temp, wind_speed, dt } = weather;
-  const sunriseTime = `${t('units.hours', { count: fromUnixTime(sunrise).getHours() })}, ${t('units.minutes', { count: fromUnixTime(sunrise).getMinutes()})}`;
-  const sunsetTime = `${t('units.hours', { count: fromUnixTime(sunset).getHours() })}, ${t('units.minutes', { count: fromUnixTime(sunset).getMinutes()})}`;
+  const { humidity, pressure, feels_like, temp, wind_speed, dt } = weather;
+  const [sunriseHours, sunriseMinutes] = sunrise.split(':');
+  const [sunsetHours, sunsetMinutes] = sunset.split(':');
+  const sunriseTime = `${t('units.hours', { count: +sunriseHours })}, ${t('units.minutes', { count: +sunriseMinutes })}`;
+  const sunsetTime = `${t('units.hours', { count: +sunsetHours })}, ${t('units.minutes', { count: +sunsetMinutes })}`;
   const voices = speechSynthesis.getVoices();
   const dateFromTimestamp = fromUnixTime(dt);
   let day = t(`week.${dateFromTimestamp.getDay()}`);
@@ -60,9 +62,9 @@ export const sayWeather = (weather: IWeatherItem, about: string) => (setIsSpeaki
   speechSynthesis.speak(utterance);
 };
 
-export const normalizeTime = (date: Date) => {
+export const normalizeTime = (date: Date, timeZone: string) => {
   const splitedDate = date
-    .toLocaleTimeString('ru-RU')
+    .toLocaleTimeString('ru-RU', { timeZone, })
     .split(':');
   
   return splitedDate.slice(0, 2).join(':');

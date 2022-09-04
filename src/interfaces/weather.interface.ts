@@ -26,4 +26,5 @@ export interface IWeather {
   daily: IWeatherDay[];
   city: string;
   chosenId: number;
+  timeZone: string;
 }

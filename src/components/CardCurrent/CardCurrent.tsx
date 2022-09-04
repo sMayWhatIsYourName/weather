@@ -13,7 +13,7 @@ import { IWeather } from '../../interfaces/weather.interface';
 import { useEffect } from 'react';
 
 export const CardCurrent = (props: CardCurrentProps): JSX.Element => {
-  const { city, chosenId, daily } = useSelector((state: IWeather) => state);
+  const { city, chosenId, daily, timeZone } = useSelector((state: IWeather) => state);
   const weather = daily.find(({ id }) => id === chosenId);
   const { t } = useTranslation();
   
@@ -25,9 +25,8 @@ export const CardCurrent = (props: CardCurrentProps): JSX.Element => {
   }
   const { data } = weather;
   const about = t(`weather.${data.weather[0].main}`);
-  const sunriseFormatted = normalizeTime(fromUnixTime(data.sunrise));
-  
-  const sunsetFormatted = normalizeTime(fromUnixTime(data.sunset));
+  const sunriseFormatted = normalizeTime(fromUnixTime(data.sunrise), timeZone);
+  const sunsetFormatted = normalizeTime(fromUnixTime(data.sunset), timeZone);
   
   return (
     <article className={styles.outter} {...props}>
@@ -46,7 +45,7 @@ export const CardCurrent = (props: CardCurrentProps): JSX.Element => {
           <CardSmall text={Math.trunc(data.wind_speed)} type='wind' />
           <CardLong className={styles.chosen} text={sunriseFormatted} type='sunrise' />
           <CardSmall className={styles.pressure} text={data.pressure} type='pressure' />
-          <ListenButton sayWeather={sayWeather(data, about)} />
+          <ListenButton sayWeather={sayWeather(data, about, sunriseFormatted, sunsetFormatted)} />
           <CardLong className={styles.chosen} text={sunsetFormatted} type='sunset' />
         </div>
       </div>

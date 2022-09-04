@@ -24,6 +24,10 @@ dl {
   opacity: 0.2;
 }
 
+.swiper-button-disabled {
+  display: none;
+}
+
 .swiper-slide {
   width: min-content;
 }

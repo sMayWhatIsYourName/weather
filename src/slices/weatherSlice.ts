@@ -11,6 +11,7 @@ const initialState: IWeather = {
   daily: [],
   city: '',
   chosenId: 0,
+  timeZone: '',
 };
 
 const weatherSlice = createSlice({
@@ -23,13 +24,15 @@ const weatherSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchWeatherFromIp.fulfilled, (state, { payload: {city, daily, current } }) => {
+      .addCase(fetchWeatherFromIp.fulfilled, (state, { payload: { city, daily, current, timeZone } }) => {
         state.daily = returnNormalizedData(daily.slice(1, -1), current);
         state.city = city;
+        state.timeZone = timeZone;
       })
-      .addCase(fetchWeatherFromCity.fulfilled, (state, { payload: { city, daily, current } }) => {
+      .addCase(fetchWeatherFromCity.fulfilled, (state, { payload: { city, daily, current, timeZone } }) => {
         state.daily = returnNormalizedData(daily.slice(1, -1), current);
         state.city = city;
+        state.timeZone = timeZone;
       });
   },
 });

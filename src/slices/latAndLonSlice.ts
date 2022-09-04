@@ -13,8 +13,9 @@ export default createAsyncThunk(
     const latAndLonData: ILatAndLon[] = latAndLonResponse.data;
     const firstElement = latAndLonData[0];
     const weatherResponse = await axios.get(APIPaths.getWeather(firstElement.lat, firstElement.lon));
-    const { data: { daily, current } } = weatherResponse;
+    const { data: { daily, current, timezone } } = weatherResponse;
     return {
+      timeZone: timezone,
       daily,
       current,
       city,

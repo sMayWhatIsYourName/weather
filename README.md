@@ -3,10 +3,7 @@
 ## [DEMO](https://weather-smaywhatisyourname.vercel.app/)
 ### С возможонстью автоопредления местоположения, озвучивания погоды с правильным склонением слов.
 ## Design by [the8055u](https://github.com/the8055u)
-<<<<<<< HEAD
 ## Icons by [Bas Milius](https://bas.dev/about)
-=======
->>>>>>> 9326a19096670c908b3a3760c2e21baa37962152
 ---
 ## Реализовано:
 - Автоопределение местоположения
@@ -18,6 +15,7 @@
 ---
 ## Технологии
 - TypeScript
+- React
 - Redux Toolkit
 - React Hook Form
 - Axios
